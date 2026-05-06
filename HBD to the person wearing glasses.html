@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 🎉</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #d8b4fe, #fbcfe8);
+    overflow: hidden;
+}
+
+/* slide */
+.slide {
+    width: 100%;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+}
+
+.active {
+    display: flex;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3em;
+    color: #a21caf;
+}
+
+/* button */
+button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 20px;
+    background: #a21caf;
+    color: white;
+    cursor: pointer;
+}
+
+/* foto */
+.photo {
+    max-width: 300px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* kuromi */
+.kuromi {
+    position: absolute;
+    width: 120px;
+}
+
+.k1 { top: 20px; left: 20px; }
+.k2 { bottom: 20px; right: 20px; }
+.k3 { bottom: 10px; left: 10px; }
+
+/* confetti */
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 0;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SLIDE 1 -->
+<div class="slide active">
+    <img src="https://i.imgur.com/3ZQ3Z4K.png" class="kuromi k1">
+    <img src="https://i.imgur.com/3ZQ3Z4K.png" class="kuromi k2">
+
+    <h1>🎉 Happy Birthday! 🎂</h1>
+    <p>Semoga hari kamu seimut Kuromi dan seceria hari ini 💜</p>
+
+    <button onclick="nextSlide()">Lihat 🎁</button>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+    <img src="https://i.imgur.com/3ZQ3Z4K.png" class="kuromi k3">
+
+    <img src="Gemini_Generated_Image_xn0aenxn0aenxn0a-clean.png" class="photo">
+
+    <h1 style="font-size:2em;">✨ You’re Special ✨</h1>
+</div>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll('.slide');
+
+function nextSlide() {
+    slides[current].classList.remove('active');
+    current++;
+    slides[current].classList.add('active');
+}
+
+/* confetti */
+for (let i = 0; i < 30; i++) {
+    let c = document.createElement('div');
+    c.classList.add('confetti');
+    c.style.left = Math.random()*100 + "vw";
+    c.style.backgroundColor = `hsl(${Math.random()*360},70%,60%)`;
+    c.style.animationDuration = (Math.random()*3+2)+"s";
+    document.body.appendChild(c);
+}
+</script>
+
+</body>
+</html>
